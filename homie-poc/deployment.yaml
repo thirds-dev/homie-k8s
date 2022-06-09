@@ -25,17 +25,29 @@ spec:
         image: ryancampbellcom/homie-poc:latest
         env:
           - name: PHILIPS_HUE_SYNC_ACCESS_KEY
-            value: ''
+            secretKeyRef:
+              name: homie-secret
+              key: PHILIPS_HUE_SYNC_ACCESS_KEY
           - name: PICOVOICE_ACCESS_KEY
-            value: ''
+            secretKeyRef:
+              name: homie-secret
+              key: PICOVOICE_ACCESS_KEY
           - name: PHILIPS_HUE_USERNAME
-            value: ''
+            secretKeyRef:
+              name: homie-secret
+              key: PHILIPS_HUE_USERNAME
           - name: PHILIPS_HUE_CLIENT_KEY
-            value: ''
+            secretKeyRef:
+              name: homie-secret
+              key: PHILIPS_HUE_CLIENT_KEY
           - name: PHILIPS_HUE_SYNC_IP
-            value: '192.168.1.67'
+            secretKeyRef:
+              name: homie-secret
+              key: PHILIPS_HUE_SYNC_IP
           - name: CHROMECAST_NAME
-            value: 'SHIELD'
+            secretKeyRef:
+              name: homie-secret
+              key: CHROMECAST_NAME
         securityContext:
           privileged: true
         volumeMounts:
