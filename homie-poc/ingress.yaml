@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: homie-poc
+  namespace: homie
+  annotations:
+    nginx.org/redirect-to-https: "False"
+    ingress.kubernetes.io/ssl-redirect: "False"
+    nginx.ingress.kubernetes.io/ssl-redirect: "False"
+    nginx.ingress.kubernetes.io/proxy-body-size: 800m
+  labels:
+    app.kubernetes.io/name: homie-poc
+    app.kubernetes.io/instance: homie-poc
+    app.kubernetes.io/component: homie-poc
+    app.kubernetes.io/part-of: homie-poc
+spec:
+  ingressClassName: public
+  rules:
+  - host: api.homie
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: homie-poc
+            port:
+              number: 80

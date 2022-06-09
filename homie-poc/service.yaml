@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: homie-poc
+  namespace: homie
+  labels:
+    app.kubernetes.io/name: homie-poc
+    app.kubernetes.io/instance: homie-poc
+    app.kubernetes.io/component: homie-poc
+    app.kubernetes.io/part-of: homie-poc
+spec:
+  selector:
+    app.kubernetes.io/name: homie-poc
+    app.kubernetes.io/instance: homie-poc
+    app.kubernetes.io/component: homie-poc
+    app.kubernetes.io/part-of: homie-poc
+  ports:
+    - protocol: TCP
+      name: http
+      port: 80
+      targetPort: 3000
+  type: ClusterIP
