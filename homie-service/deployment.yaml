@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homie-touch
+  namespace: homie
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: homie-touch
+      app.kubernetes.io/part-of: homie-touch
+  replicas: 1
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: homie-touch
+        app.kubernetes.io/instance: homie-touch
+        app.kubernetes.io/component: homie-touch
+        app.kubernetes.io/part-of: homie-touch
+    spec:
+      containers:
+      - name: homie-touch
+        image: ryancampbellcom/homie-touch:latest

@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: homie-touch
+  namespace: homie
+  labels:
+    app.kubernetes.io/name: homie-touch
+    app.kubernetes.io/instance: homie-touch
+    app.kubernetes.io/component: homie-touch
+    app.kubernetes.io/part-of: homie-touch
+spec:
+  selector:
+    app.kubernetes.io/name: homie-touch
+    app.kubernetes.io/instance: homie-touch
+    app.kubernetes.io/component: homie-touch
+    app.kubernetes.io/part-of: homie-touch
+  ports:
+    - protocol: TCP
+      name: http
+      port: 80
+      targetPort: 3000
+  type: ClusterIP

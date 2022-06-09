@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: homie-touch
+  namespace: homie
+  annotations:
+    nginx.org/redirect-to-https: "False"
+    ingress.kubernetes.io/ssl-redirect: "False"
+    nginx.ingress.kubernetes.io/ssl-redirect: "False"
+    nginx.ingress.kubernetes.io/proxy-body-size: 800m
+  labels:
+    app.kubernetes.io/name: homie-touch
+    app.kubernetes.io/instance: homie-touch
+    app.kubernetes.io/component: homie-touch
+    app.kubernetes.io/part-of: homie-touch
+spec:
+  ingressClassName: public
+  rules:
+  - host: touch.homie
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: homie-touch
+            port:
+              number: 80
