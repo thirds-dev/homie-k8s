@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homie-poc
+  namespace: homie
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: homie-poc
+      app.kubernetes.io/part-of: homie-poc
+  replicas: 1
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: homie-poc
+        app.kubernetes.io/instance: homie-poc
+        app.kubernetes.io/component: homie-poc
+        app.kubernetes.io/part-of: homie-poc
+    spec:
+      nodeSelector:
+        dedicated: respeaker
+      containers:
+      - name: homie-poc
+        image: ryancampbellcom/homie-poc:latest
+        env:
+          - name: PHILIPS_HUE_SYNC_ACCESS_KEY
+            value: ''
+          - name: PICOVOICE_ACCESS_KEY
+            value: ''
+          - name: PHILIPS_HUE_USERNAME
+            value: ''
+          - name: PHILIPS_HUE_CLIENT_KEY
+            value: ''
+          - name: PHILIPS_HUE_SYNC_IP
+            value: '192.168.1.67'
+          - name: CHROMECAST_NAME
+            value: 'SHIELD'
+        securityContext:
+          privileged: true
+        volumeMounts:
+          - mountPath: /boot
+            name: boot
+            readOnly: false
+          - mountPath: /dev/snd
+            name: snd
+            readOnly: false
+          - mountPath: /etc/voicecard
+            name: voicecard
+            readOnly: false
+          - mountPath: /dev/ttyACM0
+            name: ttyacm0
+            readOnly: false
+      volumes:
+      - name: boot
+        hostPath:
+          path: /boot
+      - name: snd
+        hostPath:
+          path: /dev/snd
+      - name: voicecard
+        hostPath:
+          path: /etc/voicecard
+      - name: ttyacm0
+        hostPath:
+          path: /dev/ttyACM0
+
