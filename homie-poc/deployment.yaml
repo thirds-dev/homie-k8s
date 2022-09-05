@@ -69,6 +69,9 @@ spec:
           - mountPath: /dev/ttyACM0
             name: ttyacm0
             readOnly: false
+          - mountPath: /dev/bus/usb
+            name: usb
+            readOnly: false
       volumes:
       - name: boot
         hostPath:
@@ -82,4 +85,6 @@ spec:
       - name: ttyacm0
         hostPath:
           path: /dev/ttyACM0
-
+      - name: usb
+        hostPath:
+          path: /dev/bus/usb
