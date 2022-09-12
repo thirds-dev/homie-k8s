@@ -15,7 +15,7 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-  - host: octoprint.homie
+  - host: octoprint.yohomie.app
     http:
       paths:
       - path: /
