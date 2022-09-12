@@ -16,7 +16,7 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-  - host: grafana.homie
+  - host: grafana.yohomie.app
     http:
       paths:
       - path: /
