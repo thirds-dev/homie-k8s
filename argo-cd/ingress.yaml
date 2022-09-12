@@ -9,6 +9,7 @@ metadata:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     nginx.ingress.kubernetes.io/tls-acme: "false"
+    cert-manager.io/issuer: letsencrypt-prod
 spec:
   ingressClassName: public
   rules:

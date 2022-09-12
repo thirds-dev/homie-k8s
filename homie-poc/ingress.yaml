@@ -8,6 +8,7 @@ metadata:
     ingress.kubernetes.io/ssl-redirect: "False"
     nginx.ingress.kubernetes.io/ssl-redirect: "False"
     nginx.ingress.kubernetes.io/proxy-body-size: 800m
+    cert-manager.io/issuer: letsencrypt-prod
   labels:
     app.kubernetes.io/name: homie-poc
     app.kubernetes.io/instance: homie-poc
