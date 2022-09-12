@@ -12,7 +12,7 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-  - host: argocd.homie
+  - host: argocd.yohomie.app
     http:
       paths:
       - path: /

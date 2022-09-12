@@ -16,7 +16,7 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-  - host: api.homie
+  - host: api.yohomie.app
     http:
       paths:
       - path: /
