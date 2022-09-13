@@ -1,12 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: octoprint-c-lan
+  name: octoprint
   annotations:
     nginx.org/redirect-to-https: "False"
     ingress.kubernetes.io/ssl-redirect: "False"
     nginx.ingress.kubernetes.io/ssl-redirect: "False"
     nginx.ingress.kubernetes.io/proxy-body-size: 800m
+    cert-manager.io/issuer: letsencrypt-prod
   labels:
     app.kubernetes.io/name: octoprint
     app.kubernetes.io/instance: octoprint
@@ -25,3 +26,6 @@ spec:
             name: octoprint-svc
             port:
               number: 80
+  tls:
+    - hosts:
+      - octoprint.yohomie.app

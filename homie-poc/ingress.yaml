@@ -27,3 +27,6 @@ spec:
             name: homie-poc
             port:
               number: 80
+  tls:
+    - hosts:
+      - api.yohomie.app
